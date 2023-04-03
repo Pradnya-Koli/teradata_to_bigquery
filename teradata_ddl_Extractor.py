@@ -6,6 +6,7 @@ import logging
 from google.cloud import bigquery
 from Create_BigQuery_Table import *
 
+database_name = os.environ.get('database')
 
 def teradata_ddl_extractor():
     try:
@@ -23,12 +24,12 @@ def teradata_ddl_extractor():
             cnxn = teradatasql.connect(host=server, user=username, password=password, database=database)
 
             cursor = cnxn.cursor()
-            query2 = "SELECT  TableName FROM  DBC.TablesV WHERE   TableKind = 'T' and     DatabaseName = 'Test' ORDER BY    TableName;"
+            query2 = "SELECT  TableName FROM  DBC.TablesV WHERE   TableKind = 'T' and     DatabaseName = '{}' ORDER BY    TableName;".format(database_name)
             cursor.execute(query2)
             res_Database = cursor.fetchall()
             table_list = pd.DataFrame(res_Database)
-            schema_list = 't'
-            create_bq_dataset(schema_list)
+            
+            create_bq_dataset(dataset_name)
 
             query = "Select RequestText from dbc.tables where tablekind='T' and databasename='Test'"
             cursor.execute(query)
