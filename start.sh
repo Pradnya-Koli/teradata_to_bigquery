@@ -1,3 +1,7 @@
+export VM_IMAGE_DIR="/opt/downloads/VantageExpress17.20_Sles12"
+DEFAULT_VM_NAME="vantage-express"
+VM_NAME="${VM_NAME:-$DEFAULT_VM_NAME}"
+vboxmanage startvm "$VM_NAME" --type headless
 export project_id="searce-practice-data-analytics"
 echo "==> project-Id",$project_id
 export bucket_name="teradata_to_gcs"
