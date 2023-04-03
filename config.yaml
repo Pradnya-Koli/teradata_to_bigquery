@@ -1,0 +1,29 @@
+gcp_settings:
+  # GCP project number.
+  project_number: 'searce-practice-data-analytics'
+
+  # Google Cloud Storage bucket, example: 'exemplary_client_test_external'
+  gcs_bucket: 'teradata_to_gcs'
+
+
+translation_config:
+  # The translation type needs to be one of these: Translation_Teradata2BQ, Translation_Redshift2BQ, Translation_Bteq2BQ,
+  # Translation_Oracle2BQ, Translation_HiveQL2BQ, Translation_SparkSQL2BQ, Translation_Snowflake2BQ,
+  # Translation_Netezza2BQ, Translation_AzureSynapse2BQ, Translation_Vertica2BQ, Translation_SQLServer2BQ,
+  # Translation_Presto2BQ, Translation_MySQL2BQ, Translation_Postgresql2BQ.
+  translation_type: Translation_Bteq2BQ
+
+
+  # The location needs to be one of these: us, eu, asia-northeast1, asia-southeast1, europe-west2, asia-south1,
+  # australia-southeast1, southamerica-east1.
+  location: 'us'
+
+  # [Optional field] The default database name to fully qualify SQL objects when their database name is missing.
+  #default_database: 'searce-practice-data-analytics'
+
+  # [Optional field] The schema search path. When SQL objects are missing schema name, translation engine will search through this list to find the value.
+  # schema_search_path:
+ # DEFAULT_SCHEME: ''
+
+  # Set this to True (default) to clean up the temporary data in the '.tmp_processed' folder after job finishes.
+  clean_up_tmp_files: False
