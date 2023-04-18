@@ -11,16 +11,15 @@ def create_bq_dataset(dataset_list):
     project = 'searce-practice-data-analytics'
     client = bigquery.Client(project=project)
     #    client = bigquery.Client.from_service_account_json(service_account_file_path)
-    for item in dataset_list:
-        dataset_id = "{}.{}".format(project, item)
-        print(dataset_id)
-        dataset = bigquery.Dataset(dataset_id)
-        try:
-            client.get_dataset(item)  # Make an API request.
-            print("Dataset {} already exists".format(dataset_id))
-        except NotFound:
-            dataset = client.create_dataset(dataset, timeout=30)  # Make an API request.
-            print("Created dataset {}.{}".format(client.project, dataset.dataset_id))
+    dataset_id = "{}.{}".format(project, dataset_list)
+    print(dataset_id)
+    dataset = bigquery.Dataset(dataset_id)
+    try:
+       client.get_dataset(dataset_list)  # Make an API request.
+       print("Dataset  already exists")
+    except NotFound:
+          dataset = client.create_dataset(dataset, timeout=30)  # Make an API request.
+          print("Created dataset {}.{}".format(client.project, dataset.dataset_id))
 
 
 def create_bq_table():
