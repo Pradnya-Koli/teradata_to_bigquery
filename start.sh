@@ -4,14 +4,16 @@ VM_NAME="${VM_NAME:-$DEFAULT_VM_NAME}"
 vboxmanage startvm "$VM_NAME" --type headless
 export project_id="searce-practice-data-analytics"
 echo "==> project-Id",$project_id
-export bucket_name="teradata_to_gcs"
+export bucket_name="snowflakes_pradu"
 echo "==>bucket_name",$bucket_name
-export dataset_name="test"
+export dataset_name="nishi"
 echo "==>dataset_name",$dataset_name
 export host="localhost"
-export username="dbc"
-export password="dbc"
-export database="Test"
+export username="nishi"
+export password="nishi123"
+export database="nishi"
+export sink_bucket_teradata="snowflakes_pradu"
+export audit="timestampcol"
 
 echo "Please select a script to execute:"
 echo "1. Historic-load"
